@@ -5,7 +5,6 @@ import 'moment-timezone';
 export class ArticleWithImageLeft extends Component {
     render() {
         const article = this.props.data;
-        const { icon, name } = article.newsOutlet;
 
         return (
             <div className="article article-with-image">
@@ -16,7 +15,7 @@ export class ArticleWithImageLeft extends Component {
                     <div className="col-8">
                         <div className="row">
                             <div className="col">
-                                <a href={article.url} target="_blank" rel="noreferrer"><h1 dangerouslySetInnerHTML={{__html: article.title}}/></a>
+                                <a href={article.url} target="_blank" rel="noopener noreferrer"><h1 dangerouslySetInnerHTML={{__html: article.title}}/></a>
                             </div>
                         </div>
                         <div className="row">
