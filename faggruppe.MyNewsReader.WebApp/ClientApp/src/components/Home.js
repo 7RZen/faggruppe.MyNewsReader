@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { NewsOutlet } from "./NewsOutlet";
 import { ArticleWithoutImage } from "./ArticleWithoutImage";
 import { ArticleWithImageLeft } from "./ArticleWithImageLeft";
 import { ArticleWithImageRight } from "./ArticleWithImageRight";
+import { NewsOutletMenu } from "./NewsOutletMenu";
 
 export class Home extends Component {
   static displayName = Home.name;
@@ -14,15 +14,18 @@ export class Home extends Component {
       articles: [],
       loadingArticles: true,
       loadingOutlets: true,
-      selectedOutlet: "nrk" // Initial news outlet displayed
+      selectedOutlet: "nrk", // Initial news outlet displayed
     };
+
     this.findArrayElementByTag = this.findArrayElementByTag.bind(this);
+    this.testGrouping1 = this.testGrouping1.bind(this);
+    this.groupByKey = this.groupByKey.bind(this);
   }
 
   callbackFunction = (selectedOutlet) => {
     this.setState({ selectedOutlet: selectedOutlet });
     this.getArticles(selectedOutlet);
-    window && window.scroll(0,0);
+    window && window.scroll(0, 0);
   };
 
   componentDidMount() {
@@ -31,29 +34,28 @@ export class Home extends Component {
   }
 
   renderNewsOutlets(outlets, selectedOutlet) {
-    // const outletsByGroup = outlets.reduce((groupedOutlet, { group, tag }) => {
-    //   if (!groupedOutlet[group]) groupedOutlet[group] = [];
-    //   groupedOutlet[group].push(this.findArrayElementByTag(outlets, tag));
-    //   return groupedOutlet;
-    // }, {});
-    // console.log(outletsByGroup);
+    const groupedOutlets = this.groupByKey(outlets, "group");
 
     return (
       <div className="list-group news-outlets">
-        <div className="list-group-item list-group-item-secondary">NEWS</div>
-        {outlets
-          .sort((a, b) => (a.name > b.name ? 1 : -1))
-          .map((outlet) => {
-            return (
-              <NewsOutlet
-                data={outlet}
-                selectedOutlet={selectedOutlet}
-                key={outlet.tag}
-                setActiveNewsOutlet={this.callbackFunction}
-              />
-            );
-          })}
-          <a href="#top" className="list-group-item list-group-item-action list-group-item-info">To top</a>
+        <NewsOutletMenu
+          data={groupedOutlets.National}
+          selectedOutlet={selectedOutlet}
+          title="Nasjonale nyheter"
+          callbackFunction={this.callbackFunction}
+        />
+        <NewsOutletMenu
+          data={groupedOutlets.International}
+          selectedOutlet={selectedOutlet}
+          title="Internasjonale nyheter"
+          callbackFunction={this.callbackFunction}
+        />
+        <a
+          href="#top"
+          className="list-group-item list-group-item-action list-group-item-info"
+        >
+          To top
+        </a>
       </div>
     );
   }
@@ -63,7 +65,7 @@ export class Home extends Component {
 
     return (
       <div className="articles">
-        {articles.map((article) => {          
+        {articles.map((article) => {
           if (article.image) {
             if (++index % 2 === 0) {
               return <ArticleWithImageLeft data={article} key={article.id} />;
@@ -76,10 +78,29 @@ export class Home extends Component {
     );
   }
 
+  groupByKey(array, key) {
+    return array.reduce((hash, obj) => {
+      if (obj[key] === undefined) return hash;
+      return Object.assign(hash, {
+        [obj[key]]: (hash[obj[key]] || []).concat(obj),
+      });
+    }, {});
+  }
+
   findArrayElementByTag(array, tag) {
     return array.find((element) => {
       return element.tag === tag;
     });
+  }
+
+  testGrouping1(outlets) {
+    const outletsByGroup = outlets.reduce((groupedOutlet, { group, tag }) => {
+      if (!groupedOutlet[group]) groupedOutlet[group] = [];
+      groupedOutlet[group].push(this.findArrayElementByTag(outlets, tag));
+      return groupedOutlet;
+    }, {});
+
+    return outletsByGroup;
   }
 
   render() {
@@ -112,7 +133,8 @@ export class Home extends Component {
     return (
       <div>
         <h1>
-          <img id="top-logo"
+          <img
+            id="top-logo"
             src={newsOutletIcon}
             alt={newsOutletName}
             className="newsoutlet-large-icon"
