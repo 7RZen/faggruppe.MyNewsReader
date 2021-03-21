@@ -18,7 +18,6 @@ export class Home extends Component {
     };
 
     this.findArrayElementByTag = this.findArrayElementByTag.bind(this);
-    this.testGrouping1 = this.testGrouping1.bind(this);
     this.groupByKey = this.groupByKey.bind(this);
   }
 
@@ -38,6 +37,16 @@ export class Home extends Component {
 
     return (
       <div className="list-group news-outlets">
+        {/* {groupedOutlets.each((outlets) => {
+          return (
+            <NewsOutletMenu
+              data={outlets}
+              selectedOutlet={selectedOutlet}
+              title="XXX"
+              callbackFunction={this.callbackFunction}
+            />
+          );
+        })} */}
         <NewsOutletMenu
           data={groupedOutlets.National}
           selectedOutlet={selectedOutlet}
@@ -91,16 +100,6 @@ export class Home extends Component {
     return array.find((element) => {
       return element.tag === tag;
     });
-  }
-
-  testGrouping1(outlets) {
-    const outletsByGroup = outlets.reduce((groupedOutlet, { group, tag }) => {
-      if (!groupedOutlet[group]) groupedOutlet[group] = [];
-      groupedOutlet[group].push(this.findArrayElementByTag(outlets, tag));
-      return groupedOutlet;
-    }, {});
-
-    return outletsByGroup;
   }
 
   render() {
