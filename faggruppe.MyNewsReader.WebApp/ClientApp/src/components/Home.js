@@ -1,3 +1,5 @@
+/*eslint no-unused-expressions: [2, { allowShortCircuit: true }]*/
+
 import React, { Component } from "react";
 import { ArticleWithoutImage } from "./ArticleWithoutImage";
 import { ArticleWithImageLeft } from "./ArticleWithImageLeft";
@@ -14,18 +16,19 @@ export class Home extends Component {
       articles: [],
       loadingArticles: true,
       loadingOutlets: true,
-      selectedOutlet: "nrk", // Initial news outlet displayed
+      selectedOutlet: "nrk" // Initial news outlet displayed
     };
 
     this.findArrayElementByTag = this.findArrayElementByTag.bind(this);
     this.groupByKey = this.groupByKey.bind(this);
+    this.callbackFunction = this.callbackFunction.bind(this);
   }
 
-  callbackFunction = (selectedOutlet) => {
-    this.setState({ selectedOutlet: selectedOutlet });
+  callbackFunction (selectedOutlet) {
+    this.setState({ selectedOutlet });
     this.getArticles(selectedOutlet);
-    window && window.scroll(0, 0);
-  };
+    if(window) window.scroll(0, 0);
+  }
 
   componentDidMount() {
     this.getNewsOutlets();
