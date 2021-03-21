@@ -1,6 +1,6 @@
 {
-  "short_name": "oh7.MyNewsFeedReader.React.WebApp",
-  "name": "oh7.MyNewsFeedReader.React.WebApp",
+  "short_name": "FeedReader",
+  "name": "My News Feed Reader",
   "icons": [
     {
       "src": "favicon.ico",

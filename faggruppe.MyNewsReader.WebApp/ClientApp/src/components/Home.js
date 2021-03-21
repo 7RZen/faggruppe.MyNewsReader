@@ -139,8 +139,10 @@ export class Home extends Component {
             className="newsoutlet-large-icon"
           />
         </h1>
-        <div className="outlets-container">{newsOutletContent}</div>
-        <div className="articles-container">{articleContent}</div>
+        <div>
+          <div className="outlets-container">{newsOutletContent}</div>
+          <div className="articles-container">{articleContent}</div>
+        </div>
       </div>
     );
   }
