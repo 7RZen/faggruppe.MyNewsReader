@@ -18,7 +18,7 @@ EXIT /B
 :CASE_install
   ECHO Installing front-end
   ECHO.
-  CALL npm ci
+  CALL npm install
   CALL front-end-scripts build
   GOTO END_CASE
 :CASE_r
