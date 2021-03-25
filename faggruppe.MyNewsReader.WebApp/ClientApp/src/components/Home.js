@@ -1,10 +1,9 @@
-/*eslint no-unused-expressions: [2, { allowShortCircuit: true }]*/
-
 import React, { Component } from "react";
 import { ArticleWithoutImage } from "./ArticleWithoutImage";
 import { ArticleWithImageLeft } from "./ArticleWithImageLeft";
 import { ArticleWithImageRight } from "./ArticleWithImageRight";
 import { NewsOutletMenu } from "./NewsOutletMenu";
+import {useState} from "react";
 
 export class Home extends Component {
   static displayName = Home.name;
@@ -16,7 +15,7 @@ export class Home extends Component {
       articles: [],
       loadingArticles: true,
       loadingOutlets: true,
-      selectedOutlet: "nrk" // Initial news outlet displayed
+      selectedOutlet: "nrk", // Initial news outlet displayed
     };
 
     this.findArrayElementByTag = this.findArrayElementByTag.bind(this);
@@ -24,10 +23,10 @@ export class Home extends Component {
     this.callbackFunction = this.callbackFunction.bind(this);
   }
 
-  callbackFunction (selectedOutlet) {
+  callbackFunction(selectedOutlet) {
     this.setState({ selectedOutlet });
     this.getArticles(selectedOutlet);
-    if(window) window.scroll(0, 0);
+    if (window) window.scroll(0, 0);
   }
 
   componentDidMount() {
@@ -36,32 +35,22 @@ export class Home extends Component {
   }
 
   renderNewsOutlets(outlets, selectedOutlet) {
-    const groupedOutlets = this.groupByKey(outlets, "group");
+    const groupedOutlets = Object.entries(this.groupByKey(outlets, "group"));
 
     return (
       <div className="list-group news-outlets">
-        {/* {groupedOutlets.each((outlets) => {
+        {groupedOutlets.map((data) => {
+          const title = data[0];
+          const outlets = data[1];
           return (
             <NewsOutletMenu
               data={outlets}
               selectedOutlet={selectedOutlet}
-              title="XXX"
+              title={title}
               callbackFunction={this.callbackFunction}
             />
           );
-        })} */}
-        <NewsOutletMenu
-          data={groupedOutlets.National}
-          selectedOutlet={selectedOutlet}
-          title="Nasjonale nyheter"
-          callbackFunction={this.callbackFunction}
-        />
-        <NewsOutletMenu
-          data={groupedOutlets.International}
-          selectedOutlet={selectedOutlet}
-          title="Internasjonale nyheter"
-          callbackFunction={this.callbackFunction}
-        />
+        })}
         <a
           href="#top"
           className="list-group-item list-group-item-action list-group-item-info"

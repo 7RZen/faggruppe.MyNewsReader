@@ -35,6 +35,12 @@ EXIT /B
   ECHO.
   CALL npm run build
   GOTO END_CASE
+:CASE_bp
+:CASE_buildproduction
+  ECHO Running one-time build
+  ECHO.
+  CALL npm run build
+  GOTO END_CASE
 :CASE_w
 :CASE_start
   ECHO Starting server
