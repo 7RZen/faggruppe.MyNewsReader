@@ -3,7 +3,6 @@ import { ArticleWithoutImage } from "./ArticleWithoutImage";
 import { ArticleWithImageLeft } from "./ArticleWithImageLeft";
 import { ArticleWithImageRight } from "./ArticleWithImageRight";
 import { NewsOutletMenu } from "./NewsOutletMenu";
-import {useState} from "react";
 
 export class Home extends Component {
   static displayName = Home.name;
@@ -142,7 +141,15 @@ export class Home extends Component {
   async getNewsOutlets() {
     await fetch("https://newsapi.local/NewsOutletStore")
       .then((data) => data.json())
-      .then((data) => this.setState({ outlets: data, loadingOutlets: false }));
+      .then((data) =>
+        this.setState({
+          outlets: data.newsOutlets,
+          loadingOutlets: false,
+        })
+      )
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   async getArticles(selectedOutlet) {
@@ -155,10 +162,10 @@ export class Home extends Component {
         "Content-Type": "application/json",
       },
     })
-      .then((data) => data.json())
+      .then((data) => data.json())      
       .then((data) =>
         this.setState({
-          articles: data,
+          articles: data.articles,
           loadingArticles: false,
           selectedOutlet: selectedOutlet,
         })
