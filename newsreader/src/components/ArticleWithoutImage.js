@@ -13,7 +13,7 @@ export class ArticleWithoutImage extends Component {
             <div className="row">
               <div className="col-12">
                 <a href={article.url} target="_blank" rel="noopener noreferrer">
-                <h1 dangerouslySetInnerHTML={{__html: article.title}}/>
+                  <h1 dangerouslySetInnerHTML={{ __html: article.title }} />
                 </a>
               </div>
             </div>
