@@ -45,6 +45,7 @@ class NewsReader extends Component {
               selectedOutlet={selectedOutlet}
               title={title}
               callbackFunction={this.callbackFunction}
+              key={title}
             />
           );
         })}

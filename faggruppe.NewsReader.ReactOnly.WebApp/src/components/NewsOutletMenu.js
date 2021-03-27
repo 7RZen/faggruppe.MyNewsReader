@@ -18,7 +18,7 @@ export class NewsOutletMenu extends Component {
 
     return (
       <div>
-        <div className="list-group-item list-group-item-secondary">{title}</div>
+        <div className="list-group-item list-group-item-secondary" key="title">{title}</div>
         {outlets
           .sort((a, b) => (a.name > b.name ? 1 : -1))
           .map((outlet) => {

@@ -15,7 +15,7 @@ export class NewsOutlet extends Component {
         const isActiveCss = this.props.selectedOutlet === outlet.tag ? " active" : "";
 
         return (
-            <button type="button" className={"list-group-item list-group-item-action" + isActiveCss} onClick={() => this.selectNewsOutlet(outlet.tag)}>{outlet.name}</button>
+            <button type="button" className={"list-group-item list-group-item-action" + isActiveCss} onClick={() => this.selectNewsOutlet(outlet.tag)} key={outlet.tag}>{outlet.name}</button>
         );
     }
 }
