@@ -1,12 +1,12 @@
 {
-  "name": "newsreader",
+  "name": "faggruppe.newsreader.reactonly.webapp",
   "version": "1.0.0",
-  "description": "",
+  "description": "Get news outlets and articles from news api",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Øistein H. Syversen",
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^4.6.0"
