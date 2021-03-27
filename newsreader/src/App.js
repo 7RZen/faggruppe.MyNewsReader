@@ -1,10 +1,12 @@
-import logo from './logo.svg';
+/* jshint ignore:start */
 import './App.css';
+import NewsReader from './components/NewsReader';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <NewsReader/>
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -17,9 +19,10 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
     </div>
   );
 }
 
 export default App;
+/* jshint ignore:end */

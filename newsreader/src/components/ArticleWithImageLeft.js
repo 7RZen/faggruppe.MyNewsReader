@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 import React, { Component } from "react";
 import Moment from "react-moment";
 import "moment-timezone";
@@ -40,3 +41,4 @@ export class ArticleWithImageLeft extends Component {
     );
   }
 }
+/* jshint ignore:end */
