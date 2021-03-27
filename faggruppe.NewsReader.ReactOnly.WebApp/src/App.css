@@ -40,6 +40,8 @@ body {
 .article {
   margin-top: 20px;
   margin-bottom: 20px;
+  padding-bottom: 20px;
+  text-align: left;
 }
 
 .article-without-image {
@@ -61,7 +63,6 @@ body {
   overflow-x: hidden;
   padding-top: 20px;
 }
-
 
 @keyframes App-logo-spin {
   from {
