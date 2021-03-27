@@ -4,7 +4,7 @@ import { ArticleWithImageLeft } from "./ArticleWithImageLeft";
 import { ArticleWithImageRight } from "./ArticleWithImageRight";
 import { NewsOutletMenu } from "./NewsOutletMenu";
 
-export class NewsReader extends Component {
+class NewsReader extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -48,12 +48,7 @@ export class NewsReader extends Component {
             />
           );
         })}
-        <a
-          href="#top"
-          className="list-group-item list-group-item-action list-group-item-info"
-        >
-          To top
-        </a>
+        <a href="#top" className="list-group-item list-group-item-action list-group-item-info">To top</a>
       </div>
     );
   }
