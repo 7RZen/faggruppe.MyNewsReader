@@ -72,3 +72,8 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.soft-date {
+  color: darkgray;
+  font-size: smaller;
+}

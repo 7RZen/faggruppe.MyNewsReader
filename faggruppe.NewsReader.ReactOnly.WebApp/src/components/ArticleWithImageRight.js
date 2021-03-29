@@ -1,7 +1,6 @@
 /* jshint ignore:start */
 import React, { Component } from "react";
-import Moment from "react-moment";
-import "moment-timezone";
+import { MyDateFormat } from "./MyDateFormat";
 
 export class ArticleWithImageRight extends Component {
   render() {
@@ -14,7 +13,7 @@ export class ArticleWithImageRight extends Component {
             <div className="row">
               <div className="col">
                 <a href={article.url} target="_blank" rel="noopener noreferrer">
-                <h1 dangerouslySetInnerHTML={{__html: article.title}}/>
+                  <h1 dangerouslySetInnerHTML={{ __html: article.title }} />
                 </a>
               </div>
             </div>
@@ -25,7 +24,7 @@ export class ArticleWithImageRight extends Component {
             </div>
             <div className="row">
               <div className="col">
-                <Moment date={article.date} />
+                <MyDateFormat date={article.date} />
               </div>
             </div>
           </div>

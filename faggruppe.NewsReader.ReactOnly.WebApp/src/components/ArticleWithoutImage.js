@@ -1,7 +1,6 @@
 /* jshint ignore:start */
 import React, { Component } from "react";
-import Moment from "react-moment";
-import "moment-timezone";
+import { MyDateFormat } from "./MyDateFormat";
 
 export class ArticleWithoutImage extends Component {
   render() {
@@ -25,7 +24,7 @@ export class ArticleWithoutImage extends Component {
             </div>
             <div className="row">
               <div className="col-12">
-                <Moment date={article.date} />
+                <MyDateFormat date={article.date} />
               </div>
             </div>
           </div>
