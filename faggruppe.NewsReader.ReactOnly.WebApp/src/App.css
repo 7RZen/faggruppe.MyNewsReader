@@ -44,6 +44,10 @@ body {
   text-align: left;
 }
 
+.article-abstract {
+  font-size: 1.2rem !important;
+}
+
 .article-without-image {
   padding-top: 20px;
   padding-bottom: 20px;

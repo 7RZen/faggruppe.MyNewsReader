@@ -19,7 +19,7 @@ export class ArticleWithImageRight extends Component {
             </div>
             <div className="row">
               <div className="col">
-                <p dangerouslySetInnerHTML={{ __html: article.abstract }} />
+                <p className="article-abstract" dangerouslySetInnerHTML={{ __html: article.abstract }} />
               </div>
             </div>
             <div className="row">

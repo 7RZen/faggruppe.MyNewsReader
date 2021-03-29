@@ -152,7 +152,6 @@ class NewsReader extends Component {
   }
 
   async getArticles(selectedOutlet) {
-    document.getElementById("top-logo").src = "";
     const url = "https://newsapi.local/NewsStore/?outlet=" + selectedOutlet;
     await fetch(url, {
       method: "GET",
