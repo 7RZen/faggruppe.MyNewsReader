@@ -138,7 +138,7 @@ class NewsReader extends Component {
   }
 
   async getNewsOutlets() {
-    await fetch("https://newsapi.local/NewsOutletStore")
+    await fetch("http://newsapi.oh7.no/NewsOutletStore")
       .then((data) => data.json())
       .then((data) =>
         this.setState({
@@ -152,7 +152,7 @@ class NewsReader extends Component {
   }
 
   async getArticles(selectedOutlet) {
-    const url = "https://newsapi.local/NewsStore/?outlet=" + selectedOutlet;
+    const url = "http://newsapi.oh7.no/NewsStore/?outlet=" + selectedOutlet;
     await fetch(url, {
       method: "GET",
       headers: {
