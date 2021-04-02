@@ -16,7 +16,7 @@ EXIT /B
 
 :CASE_i
 :CASE_install
-  ECHO Installing front-end
+  ECHO Installing front-end packages
   ECHO.
   CALL yarn install 
   CALL front-end-scripts build
@@ -24,11 +24,17 @@ EXIT /B
 :CASE_r
 :CASE_reinstall
   ECHO Reinstalling front-end
-  ECHO Deleting existing files
+  ECHO.
+  CALL front-end-scripts delete
+  CALL front-end-scripts install
+  CALL front-end-scripts watch
+GOTO END_CASE
+:CASE_d
+:CASE_delete
+  ECHO Deleting front-end packages
   ECHO.
   rd /s /q .\node_modules
-  CALL front-end-scripts install
-  GOTO END_CASE
+  GOTO END_CASE  
 :CASE_b
 :CASE_build
   ECHO Running production build
