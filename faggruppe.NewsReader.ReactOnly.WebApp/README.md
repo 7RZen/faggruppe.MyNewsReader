@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# My news reader
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+My fun project for learning react
 
 ## Available Scripts
 
