@@ -5,7 +5,7 @@
 
 ECHO.
 ECHO *********************************************
-ECHO * BEKK Forvaltning front-end script manager *
+ECHO * oh7.no Front-end script manager *
 ECHO *********************************************
 ECHO.
 
