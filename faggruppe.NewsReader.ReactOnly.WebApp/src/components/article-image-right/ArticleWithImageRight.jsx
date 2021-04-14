@@ -1,21 +1,14 @@
 /* jshint ignore:start */
 import React, { Component } from "react";
-import { MyDateFormat } from "./MyDateFormat";
+import { MyDateFormat } from "../my-date-format/MyDateFormat";
 
-export class ArticleWithImageLeft extends Component {
+export class ArticleWithImageRight extends Component {
   render() {
     const article = this.props.data;
 
     return (
       <div className="article article-with-image">
         <div className="row">
-          <div className="col-4">
-            <img
-              src={article.image}
-              className="card-img-top"
-              alt={article.title}
-            />
-          </div>
           <div className="col-8">
             <div className="row">
               <div className="col">
@@ -34,6 +27,13 @@ export class ArticleWithImageLeft extends Component {
                 <MyDateFormat date={article.date} />
               </div>
             </div>
+          </div>
+          <div className="col-4">
+            <img
+              src={article.image}
+              className="card-img-top"
+              alt={article.title}
+            />
           </div>
         </div>
       </div>

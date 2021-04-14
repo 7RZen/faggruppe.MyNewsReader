@@ -1,7 +1,6 @@
-/* jshint ignore:start */
 import './App.css';
-import Header from './components/Header';
-import NewsReader from './components/NewsReader';
+import Header from './components/header/Header';
+import NewsReader from './domain/news-reader/NewsReader';
 
 function App() {
   return (
@@ -13,4 +12,3 @@ function App() {
 }
 
 export default App;
-/* jshint ignore:end */

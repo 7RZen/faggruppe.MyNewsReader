@@ -1,9 +1,10 @@
+import "./NewsReader.css";
 import React, { Component } from "react";
-import { ArticleWithoutImage } from "./ArticleWithoutImage";
-import { ArticleWithImageLeft } from "./ArticleWithImageLeft";
-import { ArticleWithImageRight } from "./ArticleWithImageRight";
-import { NewsOutletMenu } from "./NewsOutletMenu";
-import { groupByKey, findArrayElementByTag } from "./Utils";
+import { ArticleWithImageLeft } from "../../components/article-image-left/ArticleWithImageLeft";
+import { ArticleWithImageRight } from "../../components/article-image-right/ArticleWithImageRight";
+import { ArticleWithoutImage } from "../../components/article-no-image/ArticleWithoutImage";
+import { NewsOutletMenu } from "../../components/news-outlet-menu/NewsOutletMenu";
+import { groupByKey, findArrayElementByTag } from "../../components/Utils";
 
 class NewsReader extends Component {
   constructor(props) {
@@ -36,27 +37,29 @@ class NewsReader extends Component {
     const groupedOutlets = Object.entries(groupByKey(outlets, "group"));
 
     return (
-      <div className="list-group news-outlets">
-        {groupedOutlets.map((data) => {
-          const title = data[0];
-          const outlets = data[1];
-          return (
-            <NewsOutletMenu
-              data={outlets}
-              selectedOutlet={selectedOutlet}
-              title={title}
-              callbackFunction={this.callbackFunction}
-              key={title}
-            />
-          );
-        })}
-        <a
+      <nav class="main-menu">
+        <div class="scrollbar" id="style-1">
+          {groupedOutlets.map((data) => {
+            const title = data[0];
+            const outlets = data[1];
+            return (
+              <NewsOutletMenu
+                data={outlets}
+                selectedOutlet={selectedOutlet}
+                title={title}
+                callbackFunction={this.callbackFunction}
+                key={title}
+              />
+            );
+          })}
+          {/* <a
           href="#top"
           className="list-group-item list-group-item-action list-group-item-info"
         >
           To top
-        </a>
-      </div>
+        </a> */}
+        </div>
+      </nav>
     );
   }
 
