@@ -184,3 +184,7 @@ nav.main-menu li.active > a,
   font-weight: bolder;
   text-shadow: 1px 1px 1px silver;
 }
+
+.menu-bottom {
+  background-color: #f7f7f7;
+}

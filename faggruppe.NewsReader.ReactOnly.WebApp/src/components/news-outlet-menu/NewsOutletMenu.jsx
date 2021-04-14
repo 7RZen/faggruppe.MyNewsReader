@@ -16,12 +16,13 @@ export class NewsOutletMenu extends Component {
     const outlets = this.props.data;
     const selectedOutlet = this.props.selectedOutlet;
     const title = this.props.title;
+    const iconClass = title === "National" ? "fas fa-crown" : "fas fa-globe-europe";
 
     return (
       <ul>
         <li key={title}>
           <a href="/#" className="menu-header">
-            <i className="fa"></i>
+            <i className={iconClass}></i>
             <span className="nav-text">{title}</span>
           </a>
         </li>
@@ -37,6 +38,12 @@ export class NewsOutletMenu extends Component {
               />
             );
           })}
+        <li key={title}>
+          <a href="/#top" className="menu-bottom">
+            <i className="fas fa-arrow-up"></i>
+            <span className="nav-text">To top</span>
+          </a>
+        </li>
       </ul>
     );
   }

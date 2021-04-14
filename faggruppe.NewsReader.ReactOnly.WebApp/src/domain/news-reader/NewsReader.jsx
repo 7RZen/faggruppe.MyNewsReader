@@ -52,12 +52,6 @@ class NewsReader extends Component {
               />
             );
           })}
-          {/* <a
-          href="#top"
-          className="list-group-item list-group-item-action list-group-item-info"
-        >
-          To top
-        </a> */}
         </div>
       </nav>
     );
