@@ -1,0 +1,8 @@
+.article-without-image {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.article.article-without-image > div > div {
+  margin-left: 0;
+}

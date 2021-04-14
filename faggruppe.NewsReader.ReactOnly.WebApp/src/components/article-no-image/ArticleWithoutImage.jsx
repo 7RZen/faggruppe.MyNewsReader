@@ -1,6 +1,6 @@
-/* jshint ignore:start */
+import "./ArticleWithoutImage.css";
 import React, { Component } from "react";
-import { MyDateFormat } from "./MyDateFormat";
+import { MyDateFormat } from "../my-date-format/MyDateFormat";
 
 export class ArticleWithoutImage extends Component {
   render() {
@@ -33,4 +33,3 @@ export class ArticleWithoutImage extends Component {
     );
   }
 }
-/* jshint ignore:end */

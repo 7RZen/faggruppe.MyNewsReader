@@ -1,5 +1,6 @@
+import "./NewsOutletMenu.css";
 import React, { Component } from "react";
-import { NewsOutlet } from "./NewsOutlet";
+import { NewsOutlet } from "../news-outlet/NewsOutlet";
 
 export class NewsOutletMenu extends Component {
   constructor(props) {
@@ -17,8 +18,13 @@ export class NewsOutletMenu extends Component {
     const title = this.props.title;
 
     return (
-      <div>
-        <div className="list-group-item list-group-item-secondary" key="title">{title}</div>
+      <ul>
+        <li key={title}>
+          <a href="/#" className="menu-header">
+            <i className="fa"></i>
+            <span className="nav-text">{title}</span>
+          </a>
+        </li>
         {outlets
           .sort((a, b) => (a.name > b.name ? 1 : -1))
           .map((outlet) => {
@@ -31,7 +37,7 @@ export class NewsOutletMenu extends Component {
               />
             );
           })}
-      </div>
+      </ul>
     );
   }
 }
