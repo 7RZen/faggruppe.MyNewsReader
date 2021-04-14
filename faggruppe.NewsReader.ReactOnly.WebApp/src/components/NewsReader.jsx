@@ -3,6 +3,7 @@ import { ArticleWithoutImage } from "./ArticleWithoutImage";
 import { ArticleWithImageLeft } from "./ArticleWithImageLeft";
 import { ArticleWithImageRight } from "./ArticleWithImageRight";
 import { NewsOutletMenu } from "./NewsOutletMenu";
+import { groupByKey, findArrayElementByTag } from "./Utils";
 
 class NewsReader extends Component {
   constructor(props) {
@@ -15,8 +16,8 @@ class NewsReader extends Component {
       selectedOutlet: "nrk", // Initial news outlet displayed
     };
 
-    this.findArrayElementByTag = this.findArrayElementByTag.bind(this);
-    this.groupByKey = this.groupByKey.bind(this);
+    this.findArrayElementByTag = findArrayElementByTag.bind(this);
+    this.groupByKey = groupByKey.bind(this);
     this.callbackFunction = this.callbackFunction.bind(this);
   }
 
@@ -32,7 +33,7 @@ class NewsReader extends Component {
   }
 
   renderNewsOutlets(outlets, selectedOutlet) {
-    const groupedOutlets = Object.entries(this.groupByKey(outlets, "group"));
+    const groupedOutlets = Object.entries(groupByKey(outlets, "group"));
 
     return (
       <div className="list-group news-outlets">
@@ -77,21 +78,6 @@ class NewsReader extends Component {
     );
   }
 
-  groupByKey(array, key) {
-    return array.reduce((hash, obj) => {
-      if (obj[key] === undefined) return hash;
-      return Object.assign(hash, {
-        [obj[key]]: (hash[obj[key]] || []).concat(obj),
-      });
-    }, {});
-  }
-
-  findArrayElementByTag(array, tag) {
-    return array.find((element) => {
-      return element.tag === tag;
-    });
-  }
-
   render() {
     let newsOutletContent = this.state.loadingOutlets ? (
       <p>
@@ -107,7 +93,7 @@ class NewsReader extends Component {
     ) : (
       this.renderNews(this.state.articles)
     );
-    let newsOutlet = this.findArrayElementByTag(
+    let newsOutlet = findArrayElementByTag(
       this.state.outlets,
       this.state.selectedOutlet
     );
