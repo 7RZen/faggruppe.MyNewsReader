@@ -30,14 +30,17 @@ body {
 }
 
 .article {
-  margin-top: 20px;
   margin-bottom: 20px;
-  padding-bottom: 20px;
   text-align: left;
 }
 
+.article h1 {
+  font-size: 2vw;
+}
+
 .article-abstract {
-  font-size: 1.2rem !important;
+  font-size: 1.5vw;
+  margin-bottom: 0 !important;
 }
 
 @keyframes App-logo-spin {
@@ -51,7 +54,11 @@ body {
 
 .soft-date {
   color: darkgray;
-  font-size: smaller;
+  font-size: 1vw;
+}
+
+.custom-date time {
+  font-size: 1vw;
 }
 
 .articles-container {

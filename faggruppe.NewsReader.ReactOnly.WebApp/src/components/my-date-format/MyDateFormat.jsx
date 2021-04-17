@@ -7,7 +7,7 @@ export class MyDateFormat extends Component {
   render() {
     const date = this.props.date;
     return (
-      <span>
+      <span className="custom-date">
         <Moment fromNow="true">{date}</Moment>
         <span className="soft-date" data-bs-toggle="tooltip" data-bs-placement="right" title={date}>
           &nbsp; <Moment format="DD.MM.YYYY HH:mm">{date}</Moment>
