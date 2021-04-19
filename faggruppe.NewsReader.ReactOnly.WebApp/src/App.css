@@ -64,3 +64,9 @@ body {
 .articles-container {
   margin-left: 55px;
 }
+
+/* @media only screen and (max-width: 600px) {
+  .card-img-top {
+    display: none;
+  }
+} */

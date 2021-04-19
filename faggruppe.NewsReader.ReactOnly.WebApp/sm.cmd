@@ -18,8 +18,9 @@ EXIT /B
 :CASE_install
   ECHO Installing front-end packages
   ECHO.
-  CALL yarn install 
-  CALL front-end-scripts build
+  @ECHO ON
+  CALL npm install 
+  @ECHO OFF
   GOTO END_CASE
 :CASE_r
 :CASE_reinstall
@@ -33,26 +34,34 @@ GOTO END_CASE
 :CASE_delete
   ECHO Deleting front-end packages
   ECHO.
+  @ECHO ON
   rd /s /q .\node_modules
+  @ECHO OFF
   GOTO END_CASE  
 :CASE_b
 :CASE_build
   ECHO Running production build
   ECHO.
+  @ECHO ON
   CALL yarn build
+  @ECHO OFF
   GOTO END_CASE
 :CASE_s
 :CASE_server
   ECHO Server build
   ECHO.
+  @ECHO ON
   CALL yarn global add serve
   CALL serve -s build
+  @ECHO OFF
   GOTO END_CASE
 :CASE_w
 :CASE_watch
   ECHO Watching for changes and rebuilding
   ECHO.
-  CALL yarn start
+  @ECHO ON
+  CALL npm start
+  @ECHO OFF
   GOTO END_CASE
 :CASE_v
 :CASE_version
