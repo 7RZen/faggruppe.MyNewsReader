@@ -1,9 +1,10 @@
 import "./NewsReader.css";
 import React, { Component } from "react";
-import { ArticleWithImageLeft } from "../../components/article-image-left/ArticleWithImageLeft";
-import { ArticleWithImageRight } from "../../components/article-image-right/ArticleWithImageRight";
-import { ArticleWithoutImage } from "../../components/article-no-image/ArticleWithoutImage";
+import { ArticleWithImageLeft } from "../article-image-left/ArticleWithImageLeft";
+import { ArticleWithImageRight } from "../article-image-right/ArticleWithImageRight";
+import { ArticleWithoutImage } from "../article-no-image/ArticleWithoutImage";
 import { NewsOutletMenu } from "../../components/news-outlet-menu/NewsOutletMenu";
+import { NewsHeader } from "../../components/news-header/NewsHeader";
 import { groupByKey, findArrayElementByTag } from "../../components/Utils";
 
 class NewsReader extends Component {
@@ -104,18 +105,12 @@ class NewsReader extends Component {
 
     return (
       <div>
-        <h1>
-          <img
-            id="top-logo"
-            src={newsOutletIcon}
-            alt={newsOutletName}
-            className="newsoutlet-large-icon"
-          />
-        </h1>
-        <div>
-          <div className="outlets-container">{newsOutletContent}</div>
-          <div className="articles-container">{articleContent}</div>
-        </div>
+        <NewsHeader
+          newsOutletName={newsOutletName}
+          newsOutletIcon={newsOutletIcon}
+        />
+        <div className="outlets-container">{newsOutletContent}</div>
+        <div className="articles-container">{articleContent}</div>
       </div>
     );
   }
