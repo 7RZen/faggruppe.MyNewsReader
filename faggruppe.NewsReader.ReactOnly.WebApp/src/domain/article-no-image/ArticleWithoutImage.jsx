@@ -9,16 +9,12 @@ export class ArticleWithoutImage extends Component {
     const article = this.props.data;
 
     return (
-      <div className="article article-without-image">
-        <div>
-          <ArticleTitle data={article} />
-        </div>
-        <div>
-          <ArticleAbstract data={article} />
-        </div>
-        <div>
+      <div className="articles-container article-without-image">
+        <ArticleTitle data={article} />
+        <ArticleAbstract data={article} />
+        <p>
           <MyDateFormat date={article.date} />
-        </div>
+        </p>
       </div>
     );
   }

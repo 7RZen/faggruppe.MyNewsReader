@@ -1,7 +1,6 @@
 import "./NewsReader.css";
 import React, { Component } from "react";
-import { ArticleWithImageLeft } from "../article-image-left/ArticleWithImageLeft";
-import { ArticleWithImageRight } from "../article-image-right/ArticleWithImageRight";
+import { ArticleWithImage } from "../article-image/ArticleWithImage";
 import { ArticleWithoutImage } from "../article-no-image/ArticleWithoutImage";
 import { NewsOutletMenu } from "../news-outlet-menu/NewsOutletMenu";
 import { NewsHeader } from "../../components/news-header/NewsHeader";
@@ -59,16 +58,11 @@ class NewsReader extends Component {
   }
 
   renderNews(articles) {
-    let index = 0;
-
     return (
       <div className="articles">
         {articles.map((article) => {
           if (article.image) {
-            if (++index % 2 === 0) {
-              return <ArticleWithImageLeft data={article} key={article.id} />;
-            }
-            return <ArticleWithImageRight data={article} key={article.id} />;
+            return <ArticleWithImage data={article} key={article.id} />;
           }
           return <ArticleWithoutImage data={article} key={article.id} />;
         })}

@@ -5,7 +5,7 @@ export class ArticleImage extends Component {
     const article = this.props.data;
 
     return (
-      <img src={article.image} className="card-img-top" alt={article.title} />
+      <img src={article.image} alt={article.title} />
     );
   }
 }

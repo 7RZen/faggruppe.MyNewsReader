@@ -6,9 +6,9 @@ export class ArticleAbstract extends Component {
 
     return (
       <p
-            className="article-abstract"
-            dangerouslySetInnerHTML={{ __html: article.abstract }}
-          />
+        className="article-abstract"
+        dangerouslySetInnerHTML={{ __html: article.abstract }}
+      />
     );
   }
 }
