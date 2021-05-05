@@ -16,13 +16,12 @@ export class NewsOutletMenu extends Component {
     const outlets = this.props.data;
     const selectedOutlet = this.props.selectedOutlet;
     const title = this.props.title;
-    const iconClass = title === "National" ? "fas fa-crown" : "fas fa-globe-europe";
 
     return (
       <ul>
         <li key={title}>
           <a href="/#" className="menu-header">
-            <i className={iconClass}></i>
+            <i className="fa"></i>
             <span className="nav-text">{title}</span>
           </a>
         </li>
