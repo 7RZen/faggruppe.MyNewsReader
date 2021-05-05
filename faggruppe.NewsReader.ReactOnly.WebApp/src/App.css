@@ -19,12 +19,12 @@ body {
   padding: 0;
 }
 
-.article-title {
-  font-size: 1.9vw;
+.article-title h1 {
+  font-size: 1.5vw;
 }
 
 .article-abstract {
-  font-size: 1.5vw;
+  font-size: 1.3vw;
   margin-bottom: 0 !important;
 }
 

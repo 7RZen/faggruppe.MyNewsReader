@@ -1,4 +1,5 @@
 import { Component } from "react";
+import "./NewsHeader.css";
 
 export class NewsHeader extends Component {
   render() {
@@ -7,13 +8,13 @@ export class NewsHeader extends Component {
 
     return (
       <h1>
-          <img
-            id="top-logo"
-            src={newsOutletIcon}
-            alt={newsOutletName}
-            className="newsoutlet-large-icon"
-          />
-        </h1>
+        <img
+          id="top-logo"
+          src={newsOutletIcon}
+          alt={newsOutletName}
+          className="newsoutlet-large-icon"
+        />
+      </h1>
     );
   }
 }

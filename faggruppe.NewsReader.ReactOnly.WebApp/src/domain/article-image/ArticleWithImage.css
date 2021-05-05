@@ -1,6 +1,7 @@
 .article-container-image{
   grid-template-areas: 'center right';
-  margin-bottom: 50px;
+  grid-template-columns: 50% auto;
+  margin-bottom: 30px;
 }
 
 .article-image {
@@ -10,17 +11,19 @@
 .article-content {
   grid-area: center;
   text-align: left;
+  width: 100%;
 }
 
 .article-image img {
   width: 100%;
-  padding-top: 40px;
+  padding-top: 20px;
   padding-left: 20px;
 }
 
 @media (max-width: 500px) {
   .article-container-image{
     grid-template-areas: 'center';
+    grid-template-columns: auto;
   }
 
   .article-image {
