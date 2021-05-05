@@ -62,8 +62,8 @@ body {
 }
 
 .articles-container {
-  position: relative;
-  left: 80px;
+  display: grid;
+  margin: auto;
   width: 75%;
 }
 

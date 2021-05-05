@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { ArticleWithImageLeft } from "../article-image-left/ArticleWithImageLeft";
 import { ArticleWithImageRight } from "../article-image-right/ArticleWithImageRight";
 import { ArticleWithoutImage } from "../article-no-image/ArticleWithoutImage";
-import { NewsOutletMenu } from "../../components/news-outlet-menu/NewsOutletMenu";
+import { NewsOutletMenu } from "../news-outlet-menu/NewsOutletMenu";
 import { NewsHeader } from "../../components/news-header/NewsHeader";
 import { groupByKey, findArrayElementByTag } from "../../components/Utils";
 

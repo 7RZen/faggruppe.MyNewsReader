@@ -1,6 +1,6 @@
 import "./NewsOutletMenu.css";
 import React, { Component } from "react";
-import { NewsOutlet } from "../news-outlet/NewsOutlet";
+import { NewsOutlet } from "../../components/news-outlet/NewsOutlet";
 
 export class NewsOutletMenu extends Component {
   constructor(props) {
