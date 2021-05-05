@@ -16,3 +16,9 @@
   overflow-x: hidden;
   padding-top: 20px;
 }
+
+@media (max-width: 500px) {
+  .articles-container {
+    margin-left: 35px;
+  }
+}

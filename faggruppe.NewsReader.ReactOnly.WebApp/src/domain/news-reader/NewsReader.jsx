@@ -1,9 +1,9 @@
 import "./NewsReader.css";
 import React, { Component } from "react";
-import { ArticleWithImageLeft } from "../../components/article-image-left/ArticleWithImageLeft";
-import { ArticleWithImageRight } from "../../components/article-image-right/ArticleWithImageRight";
-import { ArticleWithoutImage } from "../../components/article-no-image/ArticleWithoutImage";
-import { NewsOutletMenu } from "../../components/news-outlet-menu/NewsOutletMenu";
+import { ArticleWithImage } from "../article-image/ArticleWithImage";
+import { ArticleWithoutImage } from "../article-no-image/ArticleWithoutImage";
+import { NewsOutletMenu } from "../news-outlet-menu/NewsOutletMenu";
+import { NewsHeader } from "../../components/news-header/NewsHeader";
 import { groupByKey, findArrayElementByTag } from "../../components/Utils";
 
 class NewsReader extends Component {
@@ -58,16 +58,11 @@ class NewsReader extends Component {
   }
 
   renderNews(articles) {
-    let index = 0;
-
     return (
       <div className="articles">
         {articles.map((article) => {
           if (article.image) {
-            if (++index % 2 === 0) {
-              return <ArticleWithImageLeft data={article} key={article.id} />;
-            }
-            return <ArticleWithImageRight data={article} key={article.id} />;
+            return <ArticleWithImage data={article} key={article.id} />;
           }
           return <ArticleWithoutImage data={article} key={article.id} />;
         })}
@@ -104,18 +99,12 @@ class NewsReader extends Component {
 
     return (
       <div>
-        <h1>
-          <img
-            id="top-logo"
-            src={newsOutletIcon}
-            alt={newsOutletName}
-            className="newsoutlet-large-icon"
-          />
-        </h1>
-        <div>
-          <div className="outlets-container">{newsOutletContent}</div>
-          <div className="articles-container">{articleContent}</div>
-        </div>
+        <NewsHeader
+          newsOutletName={newsOutletName}
+          newsOutletIcon={newsOutletIcon}
+        />
+        <div className="outlets-container">{newsOutletContent}</div>
+        <div className="articles-container">{articleContent}</div>
       </div>
     );
   }

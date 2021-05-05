@@ -1,0 +1,29 @@
+.article-container-image{
+  grid-template-areas: 'center right';
+  margin-bottom: 50px;
+}
+
+.article-image {
+  grid-area: right;
+}
+
+.article-content {
+  grid-area: center;
+  text-align: left;
+}
+
+.article-image img {
+  width: 100%;
+  padding-top: 40px;
+  padding-left: 20px;
+}
+
+@media (max-width: 500px) {
+  .article-container-image{
+    grid-template-areas: 'center';
+  }
+
+  .article-image {
+    display: none;
+  }
+}
