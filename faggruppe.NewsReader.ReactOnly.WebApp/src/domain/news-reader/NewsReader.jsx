@@ -20,7 +20,10 @@ class NewsReader extends Component {
     this.findArrayElementByTag = findArrayElementByTag.bind(this);
     this.groupByKey = groupByKey.bind(this);
     this.callbackFunction = this.callbackFunction.bind(this);
-  }
+
+    this.baseUrl = "http://newsapi.oh7.no";
+    //this.baseUrl = "https://localhost:44312";
+  }  
 
   callbackFunction(selectedOutlet) {
     this.setState({ selectedOutlet });
@@ -37,8 +40,8 @@ class NewsReader extends Component {
     const groupedOutlets = Object.entries(groupByKey(outlets, "group"));
 
     return (
-      <nav class="main-menu">
-        <div class="scrollbar" id="style-1">
+      <nav className="main-menu">
+        <div className="scrollbar" id="style-1">
           {groupedOutlets.map((data) => {
             const title = data[0];
             const outlets = data[1];
@@ -78,6 +81,7 @@ class NewsReader extends Component {
     ) : (
       this.renderNewsOutlets(this.state.outlets, this.state.selectedOutlet)
     );
+
     let articleContent = this.state.loadingArticles ? (
       <p>
         <em>Loading articles...</em>
@@ -85,10 +89,12 @@ class NewsReader extends Component {
     ) : (
       this.renderNews(this.state.articles)
     );
+
     let newsOutlet = findArrayElementByTag(
       this.state.outlets,
       this.state.selectedOutlet
     );
+    
     let newsOutletName = "";
     let newsOutletIcon = "";
 
@@ -110,7 +116,14 @@ class NewsReader extends Component {
   }
 
   async getNewsOutlets() {
-    await fetch("http://newsapi.oh7.no/NewsOutletStore")
+    const url = `${this.baseUrl}/NewsOutletStore`;
+    await fetch(url, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
       .then((data) => data.json())
       .then((data) =>
         this.setState({
@@ -124,7 +137,7 @@ class NewsReader extends Component {
   }
 
   async getArticles(selectedOutlet) {
-    const url = "http://newsapi.oh7.no/NewsStore/?outlet=" + selectedOutlet;
+    const url = `${this.baseUrl}/NewsStore/?outlet=${selectedOutlet}`;
     await fetch(url, {
       method: "GET",
       headers: {

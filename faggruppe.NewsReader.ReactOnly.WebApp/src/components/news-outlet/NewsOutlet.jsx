@@ -16,8 +16,6 @@ export class NewsOutlet extends Component {
       this.props.selectedOutlet === outlet.tag ? "nav-text active" : "nav-text";
     let shortName = outlet.name;
 
-    console.log(`${outlet.name} ${outlet.name.length}`);
-
     if (outlet.name.length > 4) {
       shortName = outlet.name.substring(0, 3);
     }

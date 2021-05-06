@@ -37,7 +37,7 @@ export class NewsOutletMenu extends Component {
               />
             );
           })}
-        <li key={title}>
+        <li key={title + "_top"}>
           <a href="/#top" className="menu-bottom">
             <i className="fas fa-arrow-up"></i>
             <span className="nav-text">To top</span>
