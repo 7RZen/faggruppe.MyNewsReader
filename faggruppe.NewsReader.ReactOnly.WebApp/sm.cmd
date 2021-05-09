@@ -26,9 +26,12 @@ EXIT /B
 :CASE_reinstall
   ECHO Reinstalling front-end
   ECHO.
-  CALL front-end-scripts delete
-  CALL front-end-scripts install
-  CALL front-end-scripts watch
+  @ECHO ON
+  CALL sm delete
+  @ECHO OFF
+  @ECHO ON
+  CALL sm install
+  @ECHO OFF
 GOTO END_CASE
 :CASE_d
 :CASE_delete

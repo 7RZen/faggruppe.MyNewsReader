@@ -12,18 +12,21 @@ export class NewsOutlet extends Component {
 
   render() {
     const outlet = this.props.data;
-    const statusCss =
-      this.props.selectedOutlet === outlet.tag ? "nav-text active" : "nav-text";
+    const isSelceted = this.props.selectedOutlet === outlet.tag;
+    const outletShortName = isSelceted ? "active" : "";
+    const statusCss = isSelceted ? "nav-text active" : "nav-text";
     let shortName = outlet.name;
 
     if (outlet.name.length > 4) {
-      shortName = outlet.name.substring(0, 3);
+      shortName = shortName.replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, "");      
+      shortName = shortName.replace(/\s/g, '');
+      shortName = shortName.substring(0, 4);
     }
 
     return (
       <li key={outlet.tag}>
         <a href="/#" onClick={() => this.selectNewsOutlet(outlet.tag)}>
-          <i>{shortName}</i>
+          <i className={outletShortName}>{shortName}</i>
           <span className={statusCss}>{outlet.name}</span>
         </a>
       </li>
