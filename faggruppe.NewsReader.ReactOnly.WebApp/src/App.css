@@ -20,25 +20,45 @@ body {
 }
 
 .article-title h1 {
-  font-size: 1.5vw;
+  font-size: 1vw;
 }
 
 .article-abstract {
-  font-size: 1.3vw;
+  font-size: 0.8vw;
   margin-bottom: 0 !important;
 }
 
 .soft-date {
   color: darkgray;
-  font-size: 1vw;
+  font-size: 0.5vw;
 }
 
 .custom-date time {
-  font-size: 1vw;
+  font-size: 0.8vw;
 }
 
 .articles-container {
   display: grid;
   margin: auto;
   width: 90%;
+}
+
+@media (max-width: 800px) {
+  .article-title h1 {
+    font-size: large;
+  }
+  
+  .article-abstract {
+    font-size: medium;
+    margin-bottom: 0 !important;
+  }
+  
+  .soft-date {
+    color: darkgray;
+    font-size: x-small;
+  }
+  
+  .custom-date time {
+    font-size: medium;
+  }
 }
