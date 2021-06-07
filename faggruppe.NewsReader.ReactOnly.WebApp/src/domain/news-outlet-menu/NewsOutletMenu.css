@@ -83,7 +83,7 @@ nav.main-menu.expanded {
 }
 
 .main-menu li > a i {
- margin-left: -10px;;
+  margin-left: 10px;
 }
 
 .main-menu .nav-icon {
