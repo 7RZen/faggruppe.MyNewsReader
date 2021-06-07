@@ -140,6 +140,13 @@ export class NewsReader extends Component {
 
   async getArticles(selectedOutlet) {
     const url = `${this.baseUrl}/NewsStore/?outlet=${selectedOutlet}`;
+
+    this.setState({
+      articles: [],
+      loadingArticles: true,
+      selectedOutlet: selectedOutlet,
+    })
+
     await fetch(url, {
       method: "GET",
       headers: {
