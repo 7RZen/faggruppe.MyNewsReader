@@ -6,7 +6,9 @@ import { NewsOutletMenu } from "../news-outlet-menu/NewsOutletMenu";
 import { NewsHeader } from "../../components/news-header/NewsHeader";
 import { groupByKey, findArrayElementByTag } from "../../components/Utils";
 
-class NewsReader extends Component {
+export class NewsReader extends Component {
+  static displayName = NewsReader.name;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -158,5 +160,3 @@ class NewsReader extends Component {
       });
   }
 }
-
-export default NewsReader;
