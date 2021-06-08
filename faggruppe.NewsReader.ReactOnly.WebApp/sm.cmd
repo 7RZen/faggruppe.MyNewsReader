@@ -19,7 +19,8 @@ EXIT /B
   ECHO Installing front-end packages
   ECHO.
   @ECHO ON
-  CALL npm install 
+  CALL npm install --no-optional
+  CALL npm install react-scripts --save
   @ECHO OFF
   GOTO END_CASE
 :CASE_r
