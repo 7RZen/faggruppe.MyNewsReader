@@ -1,53 +1,64 @@
 import React, { Component } from "react";
-import { SimpleNewsOutletMenu } from "../simple-news-outlet-menu/SimpleNewsOutletMenu";
 import { groupByKey, findArrayElementByTag } from "../../components/Utils";
-import "./Admin.css";
+import { Header } from "./Header";
 
-export class Admin extends Component {
-  static displayName = Admin.name;
-
+export class ListNewsOutlets extends Component {
   constructor(props) {
     super(props);
     this.state = {
       outlets: [],
       loadingOutlets: true,
-      selectedOutlet: "nrk", // Initial news outlet displayed
     };
 
     this.findArrayElementByTag = findArrayElementByTag.bind(this);
     this.groupByKey = groupByKey.bind(this);
-    this.callbackFunction = this.callbackFunction.bind(this);
 
     this.baseUrl = "http://newsapi.oh7.no";
-  }
-
-  callbackFunction(selectedOutlet) {
-    this.setState({ selectedOutlet });
   }
 
   componentDidMount() {
     this.getNewsOutlets();
   }
 
-  renderNewsOutlets(outlets, selectedOutlet) {
+  renderNewsOutlets(outlets) {
     const groupedOutlets = Object.entries(groupByKey(outlets, "group"));
 
     return (
-      <ul>
+      <div>
+        <Header/>
         {groupedOutlets.map((data) => {
           const title = data[0];
           const outlets = data[1];
           return (
-            <SimpleNewsOutletMenu
-              data={outlets}
-              selectedOutlet={selectedOutlet}
-              title={title}
-              callbackFunction={this.callbackFunction}
-              key={title}
-            />
+            <ul>
+              <li key={title}>
+                <a href="/#">
+                  <span>{title}</span>
+                </a>
+              </li>
+              {outlets
+                .sort((a, b) => (a.name > b.name ? 1 : -1))
+                .map((outlet) => {
+                  return (
+                    <li key={outlet.tag}>
+                      <a
+                        href="/#"
+                        onClick={() => this.selectNewsOutlet(outlet.tag)}
+                      >
+                        <span>{outlet.name}</span>
+                      </a>
+                    </li>
+                  );
+                })}
+              <li key={title + "_top"}>
+                <a href="/#top" className="menu-bottom">
+                  <span className="nav-text">To top</span>
+                </a>
+              </li>
+            </ul>
           );
         })}
-      </ul>
+      </div>
     );
   }
 
@@ -62,12 +73,14 @@ export class Admin extends Component {
 
     return (
       <div>
-        <div className="admin-container">{newsOutletContent}</div>
+        <h2>List of news outlets</h2>
+        <div>{newsOutletContent}</div>
       </div>
     );
   }
 
   async getNewsOutlets() {
+    console.log("loading");
     const url = `${this.baseUrl}/NewsOutletStore`;
     await fetch(url, {
       method: "GET",
@@ -88,3 +101,5 @@ export class Admin extends Component {
       });
   }
 }
+
+export default ListNewsOutlets;
