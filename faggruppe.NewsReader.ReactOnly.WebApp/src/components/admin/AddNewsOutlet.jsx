@@ -18,4 +18,25 @@ export class AddNewsOutlet extends Component {
       </React.Fragment>
     );
   };
+
+  async saveNewsOutlet() {
+    const url = `${this.baseUrl}/NewsOutletStore`;
+    await fetch(url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((data) => data.json())
+      .then((data) =>
+        this.setState({
+          outlets: data.newsOutlets,
+          loadingOutlets: false,
+        })
+      )
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 }
