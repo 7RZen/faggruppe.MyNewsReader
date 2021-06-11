@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { NewsOutletMenu } from "../news-outlet-menu/NewsOutletMenu";
+import { SimpleNewsOutletMenu } from "../simple-news-outlet-menu/SimpleNewsOutletMenu";
 import { groupByKey, findArrayElementByTag } from "../../components/Utils";
+import "./Admin.css";
 
 export class Admin extends Component {
   static displayName = Admin.name;
@@ -18,7 +19,7 @@ export class Admin extends Component {
     this.callbackFunction = this.callbackFunction.bind(this);
 
     this.baseUrl = "http://newsapi.oh7.no";
-  }  
+  }
 
   callbackFunction(selectedOutlet) {
     this.setState({ selectedOutlet });
@@ -32,21 +33,21 @@ export class Admin extends Component {
     const groupedOutlets = Object.entries(groupByKey(outlets, "group"));
 
     return (
-        <div>
-          {groupedOutlets.map((data) => {
-            const title = data[0];
-            const outlets = data[1];
-            return (
-              <NewsOutletMenu
-                data={outlets}
-                selectedOutlet={selectedOutlet}
-                title={title}
-                callbackFunction={this.callbackFunction}
-                key={title}
-              />
-            );
-          })}
-        </div>
+      <ul>
+        {groupedOutlets.map((data) => {
+          const title = data[0];
+          const outlets = data[1];
+          return (
+            <SimpleNewsOutletMenu
+              data={outlets}
+              selectedOutlet={selectedOutlet}
+              title={title}
+              callbackFunction={this.callbackFunction}
+              key={title}
+            />
+          );
+        })}
+      </ul>
     );
   }
 
