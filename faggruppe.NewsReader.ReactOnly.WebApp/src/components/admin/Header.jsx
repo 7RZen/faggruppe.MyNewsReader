@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -14,3 +15,4 @@ export class Header extends Component {
     );
   }
 }
+/* jshint ignore:end */

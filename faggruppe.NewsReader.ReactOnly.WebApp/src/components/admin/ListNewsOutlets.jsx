@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 import React, { Component } from "react";
 import { groupByKey, findArrayElementByTag } from "../../components/Utils";
 import { Header } from "./Header";
@@ -12,12 +13,18 @@ export class ListNewsOutlets extends Component {
 
     this.findArrayElementByTag = findArrayElementByTag.bind(this);
     this.groupByKey = groupByKey.bind(this);
+    this.selectNewsOutlet = this.selectNewsOutlet.bind(this);
 
     this.baseUrl = "http://newsapi.oh7.no";
   }
 
   componentDidMount() {
     this.getNewsOutlets();
+  }
+
+  selectNewsOutlet(selectedOutlet) {
+    //this.props.selectNewsOutlet(selectedOutlet);
+    this.context.router.history.push("/edit");
   }
 
   renderNewsOutlets(outlets) {
@@ -30,31 +37,20 @@ export class ListNewsOutlets extends Component {
           const title = data[0];
           const outlets = data[1];
           return (
-            <ul>
-              <li key={title}>
-                <a href="/#">
-                  <span>{title}</span>
-                </a>
-              </li>
+            <ul key={title}>
+              <li key={title}>{title}</li>
               {outlets
                 .sort((a, b) => (a.name > b.name ? 1 : -1))
                 .map((outlet) => {
+                  let navLink = `/edit/${outlet.tag}`;
                   return (
                     <li key={outlet.tag}>
-                      <a
-                        href="/#"
-                        onClick={() => this.selectNewsOutlet(outlet.tag)}
-                      >
+                      <a href={navLink}>
                         <span>{outlet.name}</span>
                       </a>
                     </li>
                   );
                 })}
-              <li key={title + "_top"}>
-                <a href="/#top" className="menu-bottom">
-                  <span className="nav-text">To top</span>
-                </a>
-              </li>
             </ul>
           );
         })}
@@ -80,7 +76,6 @@ export class ListNewsOutlets extends Component {
   }
 
   async getNewsOutlets() {
-    console.log("loading");
     const url = `${this.baseUrl}/NewsOutletStore`;
     await fetch(url, {
       method: "GET",
@@ -103,3 +98,4 @@ export class ListNewsOutlets extends Component {
 }
 
 export default ListNewsOutlets;
+/* jshint ignore:end */
