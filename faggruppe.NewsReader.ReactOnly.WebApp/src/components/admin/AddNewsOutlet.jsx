@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import NewsOutletForm from './NewsOutletForm';
+/* jshint ignore:start */
+import React, { Component } from "react";
+import NewsOutletForm from "./NewsOutletForm";
 
 export class AddNewsOutlet extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
   }
@@ -17,7 +18,7 @@ export class AddNewsOutlet extends Component {
         <NewsOutletForm handleOnSubmit={this.handleOnSubmit} />
       </React.Fragment>
     );
-  };
+  }
 
   async saveNewsOutlet() {
     const url = `${this.baseUrl}/NewsOutletStore`;
@@ -40,3 +41,4 @@ export class AddNewsOutlet extends Component {
       });
   }
 }
+/* jshint ignore:end */

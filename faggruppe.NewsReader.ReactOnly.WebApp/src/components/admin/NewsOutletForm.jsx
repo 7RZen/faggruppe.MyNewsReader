@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
+import "./NewsOutletForm.css";
+
 const NewsOutletForm = (props) => {
   const [newsOutlet, setNewsOutlet] = useState({
     // User input fields
@@ -17,9 +19,7 @@ const NewsOutletForm = (props) => {
     skip: props.newsOutlet ? props.newsOutlet.skip : "",
     lastCrawledDate: props.newsOutlet ? props.newsOutlet.lastCrawledDate : "",
     nextCrawlDate: props.newsOutlet ? props.newsOutlet.nextCrawlDate : "",
-    articlesKeepInHistory: props.newsOutlet
-      ? props.newsOutlet.articlesKeepInHistory
-      : "",
+    articlesKeepInHistory: props.newsOutlet ? props.newsOutlet.articlesKeepInHistory : ""
   });
 
   const [errorMsg, setErrorMsg] = useState("");
@@ -150,7 +150,7 @@ const NewsOutletForm = (props) => {
           Add
         </Button>
         
-        <a href="/admin">Cancel</a>
+        <a href="/admin" className="btn btn-primary form-button">Cancel</a>
       </Form>
     </div>
   );

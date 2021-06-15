@@ -1,4 +1,3 @@
-/* jshint ignore:start */
 import React, { Component } from "react";
 import { groupByKey, findArrayElementByTag } from "../../components/Utils";
 import { Header } from "./Header";
@@ -23,7 +22,6 @@ export class ListNewsOutlets extends Component {
   }
 
   selectNewsOutlet(selectedOutlet) {
-    //this.props.selectNewsOutlet(selectedOutlet);
     this.context.router.history.push("/edit");
   }
 
@@ -32,26 +30,28 @@ export class ListNewsOutlets extends Component {
 
     return (
       <div>
-        <Header/>
+        <Header />
         {groupedOutlets.map((data) => {
           const title = data[0];
           const outlets = data[1];
           return (
-            <ul key={title}>
-              <li key={title}>{title}</li>
-              {outlets
-                .sort((a, b) => (a.name > b.name ? 1 : -1))
-                .map((outlet) => {
-                  let navLink = `/edit/${outlet.tag}`;
-                  return (
-                    <li key={outlet.tag}>
-                      <a href={navLink}>
-                        <span>{outlet.name}</span>
-                      </a>
-                    </li>
-                  );
-                })}
-            </ul>
+            <div>
+              <div>{title}</div>
+              <ul key={title}>
+                {outlets
+                  .sort((a, b) => (a.name > b.name ? 1 : -1))
+                  .map((outlet) => {
+                    let navLink = `/edit/${outlet.tag}`;
+                    return (
+                      <li key={outlet.tag}>
+                        <a href={navLink}>
+                          <span>{outlet.name}</span>
+                        </a>
+                      </li>
+                    );
+                  })}
+              </ul>
+            </div>
           );
         })}
       </div>
@@ -98,4 +98,3 @@ export class ListNewsOutlets extends Component {
 }
 
 export default ListNewsOutlets;
-/* jshint ignore:end */
