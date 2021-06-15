@@ -7,7 +7,7 @@ import "./Header.css";
 export class Header extends Component {
   render() {
     return (
-      <header class="page-header">
+      <header className="page-header">
         <div className="links">
           <NavLink to="/add" className="link" activeClassName="active">
             Add news outlet

@@ -35,9 +35,9 @@ export class ListNewsOutlets extends Component {
           const title = data[0];
           const outlets = data[1];
           return (
-            <div>
+            <div key={title}>
               <div>{title}</div>
-              <ul key={title}>
+              <ul>
                 {outlets
                   .sort((a, b) => (a.name > b.name ? 1 : -1))
                   .map((outlet) => {
