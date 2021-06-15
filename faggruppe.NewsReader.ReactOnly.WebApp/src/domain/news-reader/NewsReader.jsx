@@ -24,7 +24,6 @@ export class NewsReader extends Component {
     this.callbackFunction = this.callbackFunction.bind(this);
 
     this.baseUrl = "http://newsapi.oh7.no";
-    //this.baseUrl = "https://localhost:44312";
   }  
 
   callbackFunction(selectedOutlet) {
