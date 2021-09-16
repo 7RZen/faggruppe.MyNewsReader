@@ -1,6 +1,6 @@
 /* jshint ignore:start */
 import React, { Component } from "react";
-import NewsOutletForm from "./NewsOutletForm";
+import NewsOutletForm from "./NewsOutletForm/NewsOutletForm";
 
 export class AddNewsOutlet extends Component {
   constructor(props) {
@@ -9,7 +9,8 @@ export class AddNewsOutlet extends Component {
   }
 
   handleOnSubmit(outlet) {
-    console.log(outlet);
+    //console.log(outlet);
+    this.saveNewsOutlet(outlet);
   }
 
   render() {
@@ -20,7 +21,7 @@ export class AddNewsOutlet extends Component {
     );
   }
 
-  async saveNewsOutlet() {
+  async saveNewsOutlet(outlet) {
     const url = `${this.baseUrl}/NewsOutletStore`;
     await fetch(url, {
       method: "POST",
@@ -28,17 +29,11 @@ export class AddNewsOutlet extends Component {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
+      body: outlet,
     })
       .then((data) => data.json())
-      .then((data) =>
-        this.setState({
-          outlets: data.newsOutlets,
-          loadingOutlets: false,
-        })
-      )
-      .catch((error) => {
-        console.error(error);
-      });
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
   }
 }
 /* jshint ignore:end */

@@ -1,6 +1,6 @@
 /* jshint ignore:start */
 import React, { Component } from "react";
-import NewsOutletForm from "./NewsOutletForm";
+import NewsOutletForm from "./NewsOutletForm/NewsOutletForm";
 
 export class EditNewsOutlet extends Component {
   constructor(props) {
