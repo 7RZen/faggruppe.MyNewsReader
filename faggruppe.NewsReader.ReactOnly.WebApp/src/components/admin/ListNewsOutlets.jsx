@@ -14,7 +14,8 @@ export class ListNewsOutlets extends Component {
     this.groupByKey = groupByKey.bind(this);
     this.selectNewsOutlet = this.selectNewsOutlet.bind(this);
 
-    this.baseUrl = "http://newsapi.oh7.no";
+    //this.baseUrl = "http://newsapi.oh7.no";
+    this.baseUrl = "https://localhost:5001";
   }
 
   componentDidMount() {
