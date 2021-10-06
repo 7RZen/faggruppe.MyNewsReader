@@ -3,6 +3,7 @@ import { Route } from 'react-router';
 import { Layout } from './components/Layout';
 import { ListNewsOutlets } from './components/admin/ListNewsOutlets';
 import { AddNewsOutlet } from './components/admin/AddNewsOutlet';
+import { EditNewsOutlet } from './components/admin/EditNewsOutlet';
 import { NewsReader } from "./domain/news-reader/NewsReader";
 
 import './App.css'
@@ -16,6 +17,7 @@ export default class App extends Component {
         <Route exact path='/' component={NewsReader} />
         <Route path='/admin' component={ListNewsOutlets} />
         <Route path='/add' component={AddNewsOutlet} />
+        <Route path='/edit' component={EditNewsOutlet} />
       </Layout>
     );
   }

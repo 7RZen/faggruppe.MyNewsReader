@@ -1,29 +1,55 @@
-/* jshint ignore:start */
 import React, { Component } from "react";
 import NewsOutletForm from "./NewsOutletForm/NewsOutletForm";
 
 export class EditNewsOutlet extends Component {
   constructor(props) {
     super(props);
-    this.outlet = null;
+
+    this.state = {
+      outlet: null,
+      loadingOutlet: true,
+    };
+
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
     this.selectedNewsOutlet = "nrk";
+
+    //this.baseUrl = "http://newsapi.oh7.no";
+    this.baseUrl = "https://localhost:5001";
+  }
+
+  componentDidMount() {
+    this.getNewsOutlet(this.selectedNewsOutlet);
   }
 
   handleOnSubmit(outlet) {
     console.log(outlet);
   }
 
-  render() {
+  renderNewsOutlet(outlet) {
     return (
       <React.Fragment>
-        <NewsOutletForm handleOnSubmit={this.handleOnSubmit} newsOutlet={this.outlet} />
+        <NewsOutletForm
+          handleOnSubmit={this.handleOnSubmit}
+          newsOutlet={outlet}
+        />
       </React.Fragment>
     );
   }
 
-  async getNewsOutlet() {
-    const url = `${this.baseUrl}/NewsOutletStore/${this.selectedNewsOutlet}`;
+  render() {
+    let content = this.state.loadingOutlet ? (
+      <p>
+        <em>Loading news outlet...</em>
+      </p>
+    ) : (
+      this.renderNewsOutlet(this.state.outlet)
+    );
+
+    return <div>content{content}</div>;
+  }
+
+  async getNewsOutlet(selectedNewsOutlet) {
+    const url = `${this.baseUrl}/NewsOutletStore/${selectedNewsOutlet}`;
     await fetch(url, {
       method: "GET",
       headers: {
@@ -32,12 +58,13 @@ export class EditNewsOutlet extends Component {
       },
     })
       .then((data) => data.json())
-      .then((data) =>
+      .then((data) => {
+        var newsOutlet = data.newsOutlets[0];
         this.setState({
-          outlet: data.newsOutlets,
-          loadingOutlets: false,
-        })
-      )
+          outlet: newsOutlet,
+          loadingOutlet: false,
+        });
+      })
       .catch((error) => {
         console.error(error);
       });
@@ -64,4 +91,3 @@ export class EditNewsOutlet extends Component {
       });
   }
 }
-/* jshint ignore:end */
