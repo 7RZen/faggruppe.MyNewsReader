@@ -23,7 +23,8 @@ export class NewsReader extends Component {
     this.groupByKey = groupByKey.bind(this);
     this.callbackFunction = this.callbackFunction.bind(this);
 
-    this.baseUrl = "http://newsapi.oh7.no";
+    //this.baseUrl = "http://newsapi.oh7.no";
+    this.baseUrl = "https://localhost:5001";
   }  
 
   callbackFunction(selectedOutlet) {
